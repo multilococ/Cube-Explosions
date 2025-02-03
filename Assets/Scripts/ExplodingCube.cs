@@ -36,35 +36,22 @@ public class ExplodingCube : MonoBehaviour
 
     private void SpawnChildrens()
     {
-        int childrenCount = Random.Range(_minChildrenCount, _maxChildrenCount);
+        int childrenCount = Random.Range(_minChildrenCount, _maxChildrenCount + 1);
 
-        if (Random.Range(0, _maxSpawnChildrenChance) <= _spawnChildrenChance)
+        GameObject[] childrens = new GameObject[childrenCount];
+
+        if (Random.Range(0, _maxSpawnChildrenChance + 1) <= _spawnChildrenChance)
         {
-            for (int i = 0; i <= childrenCount; i++)
+            for (int i = 0; i < childrenCount; i++)
             {
-                GameObject children = Instantiate(_children, transform.position, Quaternion.identity);
+                childrens[i] = Instantiate(_children, transform.position, Quaternion.identity);
+                childrens[i].GetComponent<ExplodingCube>().ReduceParameters();
+                childrens[i].GetComponent<Rigidbody>().AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
 
-                children.GetComponent<ExplodingCube>().ReduceParameters();
             }
         }
 
-        Explode();
         Destroy(gameObject);
-    }
-
-    private void Explode()
-    {
-        Collider[] overlappdeColliders = Physics.OverlapSphere(transform.position, _explosionRadius);
-
-        foreach (Collider collider in overlappdeColliders)
-        {
-            Rigidbody rigidbody = collider.attachedRigidbody;
-
-            if (rigidbody != null)
-            {
-                rigidbody.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
-            }
-        }
     }
 
     private void SetRandomColor()
