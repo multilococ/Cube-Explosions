@@ -1,20 +1,16 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class Bomber : MonoBehaviour
+public class Bomber
 {
-    [SerializeField] private float _spawnScatterRadius = 20f;
-    [SerializeField] private float _spawnScatterForce = 500f;
+    private float _spawnScatterRadius = 20f;
+    private float _spawnScatterForce = 500f;
 
-    private Rigidbody _rigidbody;
-
-    private void Awake()
+    public void ScatterObject(Cube cube)
     {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
+        Rigidbody rigidbody = cube.GetComponent<Rigidbody>();
 
-    public void ScatterObjects()
-    {
-        _rigidbody.AddExplosionForce(_spawnScatterForce, transform.position, _spawnScatterRadius);
+        Vector3 scatteringPosition = cube.transform.position;
+
+        rigidbody.AddExplosionForce(_spawnScatterForce, scatteringPosition, _spawnScatterRadius);
     }
 }

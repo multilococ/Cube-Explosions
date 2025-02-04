@@ -1,9 +1,11 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Bomber))]
+[RequireComponent(typeof(Rigidbody))]
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Cube _cubePrefab;
+
+    private Bomber _bomber = new Bomber();
 
     private int _maxChildrenCount = 6;
     private int _minChildrenCount = 2;
@@ -26,7 +28,7 @@ public class Spawner : MonoBehaviour
             {
                 childrenCubes[i] = Instantiate(_cubePrefab, transform.position, Quaternion.identity);
                 childrenCubes[i].ReduceParameters();
-                childrenCubes[i].GetComponent<Bomber>().ScatterObjects();
+                _bomber.ScatterObject(childrenCubes[i]);
             }
         }
 

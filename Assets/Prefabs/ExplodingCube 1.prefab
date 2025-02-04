@@ -14,9 +14,7 @@ GameObject:
   - component: {fileID: 7442762395303362074}
   - component: {fileID: 1540049524698562078}
   - component: {fileID: 3445333241242317402}
-  - component: {fileID: 5111644744726325598}
   - component: {fileID: 2799218678704075053}
-  - component: {fileID: 5574409353210942620}
   m_Layer: 0
   m_Name: ExplodingCube 1
   m_TagString: Untagged
@@ -149,21 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9103ef8df74ac46a43fb4ec568639b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawner: {fileID: 2799218678704075053}
-  Bomber: {fileID: 5574409353210942620}
---- !u!114 &5111644744726325598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5219512720805252094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c0c1ea9e7e91c40bdbe32370f0ce6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderer: {fileID: 9024344076384388697}
 --- !u!114 &2799218678704075053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,17 +160,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cubePrefab: {fileID: 3445333241242317402}
---- !u!114 &5574409353210942620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5219512720805252094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c25cf91204e60644975724eb44d8422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnScatterRadius: 20
-  _spawnScatterForce: 500
