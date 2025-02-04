@@ -9,7 +9,12 @@ public class Spawner : MonoBehaviour
     private int _minChildrenCount = 2;
     private int _maxSpawnChildrenChance = 100;
 
-    public void SpawnChildrens(int spawnChildrenChance)
+    private void OnMouseDown()
+    {
+        SpawnChildrens(_cubePrefab.SpawnChildrenChance);
+    }
+
+    private void SpawnChildrens(int spawnChildrenChance)
     {
         int childrenCount = Random.Range(_minChildrenCount, _maxChildrenCount + 1);
 
