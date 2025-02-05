@@ -5,31 +5,32 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Cube _cubePrefab;
 
-    private Bomber _bomber = new Bomber();
+    private Spreader _spreader = new Spreader();
 
     private int _maxChildrenCount = 6;
     private int _minChildrenCount = 2;
-    private int _maxSpawnChildrenChance = 100;
 
-    private void OnMouseDown()
+    private void OnEnable()
     {
-        SpawnChildrens(_cubePrefab.SpawnChildrenChance);
+        _cubePrefab.SpawnChildrens += SpawnChildrens;
     }
 
-    private void SpawnChildrens(int spawnChildrenChance)
+    private void OnDisable()
+    {
+        _cubePrefab.SpawnChildrens -= SpawnChildrens;
+    }
+
+    private void SpawnChildrens()
     {
         int childrenCount = Random.Range(_minChildrenCount, _maxChildrenCount + 1);
 
         Cube[] childrenCubes = new Cube[childrenCount];
 
-        if (Random.Range(0, _maxSpawnChildrenChance + 1) <= spawnChildrenChance)
+        for (int i = 0; i < childrenCount; i++)
         {
-            for (int i = 0; i < childrenCount; i++)
-            {
-                childrenCubes[i] = Instantiate(_cubePrefab, transform.position, Quaternion.identity);
-                childrenCubes[i].ReduceParameters();
-                _bomber.ScatterObject(childrenCubes[i]);
-            }
+            childrenCubes[i] = Instantiate(_cubePrefab, transform.position, Quaternion.identity);
+            childrenCubes[i].ReduceParameters();
+            _spreader.ScatterObject(childrenCubes[i]);
         }
 
         Destroy(gameObject);

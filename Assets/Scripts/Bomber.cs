@@ -1,16 +1,24 @@
 using UnityEngine;
 
 public class Bomber
-{
-    private float _spawnScatterRadius = 20f;
-    private float _spawnScatterForce = 500f;
-
-    public void ScatterObject(Cube cube)
+{   
+    public void Explode(Cube cube,float explosionRadius,float explosionForce)
     {
-        Rigidbody rigidbody = cube.GetComponent<Rigidbody>();
+        Vector3 explodePoint = cube.transform.position;
 
-        Vector3 scatteringPosition = cube.transform.position;
+        Collider[] overlappdeColliders = Physics.OverlapSphere(explodePoint, explosionRadius);
 
-        rigidbody.AddExplosionForce(_spawnScatterForce, scatteringPosition, _spawnScatterRadius);
+        Debug.Log("BOOM!");
+
+        foreach (Collider collider in overlappdeColliders)
+        {
+            Rigidbody rigidbody = collider.attachedRigidbody;
+
+            if (rigidbody != null)
+            {
+                rigidbody.AddExplosionForce(explosionForce, explodePoint, explosionRadius);
+                
+            }
+        }
     }
 }
