@@ -12,12 +12,12 @@ public class Spawner : MonoBehaviour
 
     private void OnEnable()
     {
-        _cubePrefab.OnSpawnChildrens += SpawnChildrens;
+        _cubePrefab.OnClick += SpawnChildrens;
     }
 
     private void OnDisable()
     {
-        _cubePrefab.OnSpawnChildrens -= SpawnChildrens;
+        _cubePrefab.OnClick -= SpawnChildrens;
     }
 
     private void SpawnChildrens()
@@ -32,7 +32,5 @@ public class Spawner : MonoBehaviour
             childrenCubes[i].ReduceParameters();
             _spreader.ScatterObject(childrenCubes[i]);
         }
-
-        Destroy(gameObject);
     }
 }
