@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Spawner))]
 public class Cube : MonoBehaviour
 {
-    public event Action SpawnChildrens;
+    public event Action OnSpawnChildrens;
 
     [SerializeField] private float _eplosionForce = 150;
     [SerializeField] private float _explosionRadius = 650;
@@ -24,7 +24,7 @@ public class Cube : MonoBehaviour
     {
         if (UnityEngine.Random.Range(0, _maxSpawnChildrenChance + 1) <= _spawnChildrenChance)
         {
-            SpawnChildrens?.Invoke();
+            OnSpawnChildrens?.Invoke();
         }
         else 
         {

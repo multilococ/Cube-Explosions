@@ -12,12 +12,12 @@ public class Spawner : MonoBehaviour
 
     private void OnEnable()
     {
-        _cubePrefab.SpawnChildrens += SpawnChildrens;
+        _cubePrefab.OnSpawnChildrens += SpawnChildrens;
     }
 
     private void OnDisable()
     {
-        _cubePrefab.SpawnChildrens -= SpawnChildrens;
+        _cubePrefab.OnSpawnChildrens -= SpawnChildrens;
     }
 
     private void SpawnChildrens()
