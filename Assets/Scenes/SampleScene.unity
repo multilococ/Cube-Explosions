@@ -184,50 +184,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24648992}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &45907374
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 45907376}
-  - component: {fileID: 45907375}
-  m_Layer: 0
-  m_Name: Bomber
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &45907375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45907374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c25cf91204e60644975724eb44d8422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &45907376
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45907374}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &209954340 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 1540049524698562078, guid: e44a5a88a9dd84d4fbcc2d5d02c6a8b3, type: 3}
@@ -402,7 +358,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 963194227}
   _spawner: {fileID: 1170065972}
-  _bomber: {fileID: 45907375}
 --- !u!4 &597042423
 Transform:
   m_ObjectHideFlags: 0
@@ -1151,5 +1106,4 @@ SceneRoots:
   - {fileID: 282667810}
   - {fileID: 2046467804}
   - {fileID: 1170065974}
-  - {fileID: 45907376}
   - {fileID: 597042423}

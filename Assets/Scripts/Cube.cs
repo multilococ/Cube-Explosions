@@ -1,10 +1,7 @@
-using System;
 using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    public event Action SpawnChildrenChanceIsWorked;
-    public event Action ExplodeChanceIsWorked;
 
     [SerializeField] private float _explosionForce = 150;
     [SerializeField] private float _explosionRadius = 650;
@@ -26,18 +23,9 @@ public class Cube : MonoBehaviour
         _colorizer.SetRandomColor(transform.GetComponent<Renderer>());
     }
 
-    public void DestroyObjectWithChance()
+    public bool ReturnChance()
     {
-        if (UnityEngine.Random.Range(0, _maxSpawnChildrenChance + 1) <= _spawnChildrenChance)
-        {
-            SpawnChildrenChanceIsWorked?.Invoke();
-        }
-        else
-        {
-            ExplodeChanceIsWorked?.Invoke();
-        }
-
-        Destroy(gameObject);
+        return Random.Range(0, _maxSpawnChildrenChance + 1) <= _spawnChildrenChance;
     }
 
     public void ReduceParameters()

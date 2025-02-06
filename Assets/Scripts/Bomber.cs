@@ -1,23 +1,12 @@
 using UnityEngine;
 
-public class Bomber : MonoBehaviour
+public class Bomber
 {
-    private Cube _cube;
-
-    public void SetCube(Cube cube) 
+    public void Explode(Cube cube)
     {
-        if (_cube != null)
-        {
-            _cube = cube;
-            _cube.ExplodeChanceIsWorked += Explode;
-        }
-    }
+        Vector3 explodePoint = cube.transform.position;
 
-    private void Explode()
-    {
-        Vector3 explodePoint = _cube.transform.position;
-
-        Collider[] overlappdeColliders = Physics.OverlapSphere(explodePoint,_cube.ExplosionRadius);
+        Collider[] overlappdeColliders = Physics.OverlapSphere(explodePoint,cube.ExplosionRadius);
 
         Debug.Log("BOOM!");
 
@@ -27,11 +16,9 @@ public class Bomber : MonoBehaviour
 
             if (rigidbody != null)
             {
-                rigidbody.AddExplosionForce(_cube.ExplosionForce, explodePoint, _cube.ExplosionRadius);
+                rigidbody.AddExplosionForce(cube.ExplosionForce, explodePoint, cube.ExplosionRadius);
                 
             }
         }
-
-        _cube.ExplodeChanceIsWorked -= Explode;
     }
 }
