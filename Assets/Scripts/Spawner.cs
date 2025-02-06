@@ -1,23 +1,21 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Cube _cubePrefab;
+    private Cube _cube;
 
     private Spreader _spreader = new Spreader();
 
     private int _maxChildrenCount = 6;
     private int _minChildrenCount = 2;
 
-    private void OnEnable()
+    public void SetCube(Cube cube)
     {
-        _cubePrefab.OnClick += SpawnChildrens;
-    }
-
-    private void OnDisable()
-    {
-        _cubePrefab.OnClick -= SpawnChildrens;
+        if (_cube != null)
+        {
+            _cube = cube;
+            _cube.SpawnChildrenChanceIsWorked += SpawnChildrens;
+        }
     }
 
     private void SpawnChildrens()
@@ -28,9 +26,11 @@ public class Spawner : MonoBehaviour
 
         for (int i = 0; i < childrenCount; i++)
         {
-            childrenCubes[i] = Instantiate(_cubePrefab, transform.position, Quaternion.identity);
+            childrenCubes[i] = Instantiate(_cube, _cube.transform.position, Quaternion.identity);
             childrenCubes[i].ReduceParameters();
             _spreader.ScatterObject(childrenCubes[i]);
         }
+
+        _cube.SpawnChildrenChanceIsWorked -= SpawnChildrens;
     }
 }

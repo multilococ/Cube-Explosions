@@ -1,17 +1,15 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Spawner))]
 public class Cube : MonoBehaviour
 {
-    public event Action OnClick;
+    public event Action SpawnChildrenChanceIsWorked;
+    public event Action ExplodeChanceIsWorked;
 
-    [SerializeField] private float _eplosionForce = 150;
+    [SerializeField] private float _explosionForce = 150;
     [SerializeField] private float _explosionRadius = 650;
 
     private Colorizer _colorizer = new Colorizer();
-
-    private Bomber _bomber = new Bomber();
 
     private int _spawnChildrenChance = 100;
     private int _maxSpawnChildrenChance = 100;
@@ -20,23 +18,26 @@ public class Cube : MonoBehaviour
 
     private float _explosionScaleFacor = 1.5f;
 
-    private void OnMouseDown()
-    {
-        if (UnityEngine.Random.Range(0, _maxSpawnChildrenChance + 1) <= _spawnChildrenChance)
-        {
-            OnClick?.Invoke();
-        }
-        else
-        {
-            _bomber.Explode(this, _explosionRadius, _eplosionForce); ;
-        }
-
-        Destroy(gameObject);
-    }
+    public float ExplosionForce => _explosionForce;
+    public float ExplosionRadius => _explosionRadius;
 
     private void Awake()
     {
         _colorizer.SetRandomColor(transform.GetComponent<Renderer>());
+    }
+
+    public void DestroyObjectWithChance()
+    {
+        if (UnityEngine.Random.Range(0, _maxSpawnChildrenChance + 1) <= _spawnChildrenChance)
+        {
+            SpawnChildrenChanceIsWorked?.Invoke();
+        }
+        else
+        {
+            ExplodeChanceIsWorked?.Invoke();
+        }
+
+        Destroy(gameObject);
     }
 
     public void ReduceParameters()
@@ -47,6 +48,6 @@ public class Cube : MonoBehaviour
         scale /= _scaleloweringFactor;
         transform.localScale = scale;
         _explosionRadius *= _explosionScaleFacor;
-        _eplosionForce *= _explosionScaleFacor;
+        _explosionForce *= _explosionScaleFacor;
     }
 }

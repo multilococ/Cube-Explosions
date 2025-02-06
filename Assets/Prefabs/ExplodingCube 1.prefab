@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7442762395303362074}
   - component: {fileID: 1540049524698562078}
   - component: {fileID: 3445333241242317402}
-  - component: {fileID: 2799218678704075053}
   m_Layer: 0
   m_Name: ExplodingCube 1
   m_TagString: Untagged
@@ -147,16 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9103ef8df74ac46a43fb4ec568639b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2799218678704075053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5219512720805252094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57170573f5e01ed44b1bbaeed81a6f09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cubePrefab: {fileID: 3445333241242317402}
+  _explosionForce: 150
+  _explosionRadius: 650
