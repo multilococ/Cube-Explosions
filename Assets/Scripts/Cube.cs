@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-
     [SerializeField] private float _explosionForce = 150;
     [SerializeField] private float _explosionRadius = 650;
 
