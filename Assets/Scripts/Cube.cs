@@ -26,7 +26,7 @@ public class Cube : MonoBehaviour
         _colorizer.SetRandomColor(GetComponent<Renderer>());
     }
 
-    public Rigidbody ReturnRigibody() => 
+    public Rigidbody ReturnRigibody => 
         _rigidbody;
    
     public bool CanSplitUp() =>
