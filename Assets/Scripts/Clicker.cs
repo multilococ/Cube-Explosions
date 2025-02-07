@@ -22,7 +22,7 @@ public class Clicker : MonoBehaviour
         {
             if (hit.transform.TryGetComponent<Cube>(out Cube cube))
             {
-                if (cube.ReturnChance())
+                if (cube.CanSplitUp())
                     _spawner.SpawnChildrens(cube);
                 else
                     _bomber.Explode(cube);

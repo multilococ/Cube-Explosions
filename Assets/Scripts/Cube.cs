@@ -1,11 +1,14 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Renderer))]
+[RequireComponent(typeof(Rigidbody))]
 public class Cube : MonoBehaviour
 {
     [SerializeField] private float _explosionForce = 150;
     [SerializeField] private float _explosionRadius = 650;
 
     private Colorizer _colorizer = new Colorizer();
+    private Rigidbody _rigidbody;
 
     private int _spawnChildrenChance = 100;
     private int _maxSpawnChildrenChance = 100;
@@ -19,13 +22,15 @@ public class Cube : MonoBehaviour
 
     private void Awake()
     {
-        _colorizer.SetRandomColor(transform.GetComponent<Renderer>());
+        _rigidbody = GetComponent<Rigidbody>();
+        _colorizer.SetRandomColor(GetComponent<Renderer>());
     }
 
-    public bool ReturnChance()
-    {
-        return Random.Range(0, _maxSpawnChildrenChance + 1) <= _spawnChildrenChance;
-    }
+    public Rigidbody ReturnRigibody() => 
+        _rigidbody;
+   
+    public bool CanSplitUp() =>
+        Random.Range(0, _maxSpawnChildrenChance + 1) <= _spawnChildrenChance;
 
     public void ReduceParameters()
     {

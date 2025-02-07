@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
         {
             childrenCubes[i] = Instantiate(cube, cube.transform.position, Quaternion.identity);
             childrenCubes[i].ReduceParameters();
-            _spreader.ScatterObject(childrenCubes[i]);
+            _spreader.ScatterObject(childrenCubes[i].ReturnRigibody());
         }
     }
 }
